@@ -69,7 +69,7 @@ $("#mail").on("change",()=>{
 $("#num").on("change",()=>{
    var Number = document.getElementById("num").value;
    var regiex = /^[6-9]\d{9}$/;
-   if(regiex.test(num)){
+   if(regiex.test(Number)){
       isnum = true;
       success_msg("msg_num","","num");
    }
@@ -132,44 +132,6 @@ $("#pass2").on("change",()=>{
    }
 })
 
-
-const myform = document.getElementById("myform");
-myform.addEventListener("submit",function(e){
-    e.preventDefault()
-});
-
-function validate1(){
-    var email = document.getElementById("mail1").value.trim();
-     var regiex = /^([a-zA-z0-9\.-]+)@([a-zA-Z0-9]+)\.([a-z]{2,9})$/;
-     if(regiex.test(email)){
-        document.getElementById("msg_email1").innerHTML = "";
-        document.getElementById("msg_email1").style.visibility = "visible";
-        document.getElementById("mail1").style.borderColor= "green";
-     }
-     else{
-        document.getElementById("msg_email1").innerHTML = "Invalid";
-        document.getElementById("msg_email1").style.visibility = "visible";
-        document.getElementById("msg_email1").style.color = "red";
-        document.getElementById("mail1").style.borderColor = "red"
-     }
-
-
-     var pass5 = document.getElementById("pass5").value.trim();
-     var regiex = /^([A-Za-z0-9]+){8,15}$/;
-     if(regiex.test(pass5)){
-        document.getElementById("msg_pass5").innerHTML = "";
-        document.getElementById("msg_pass5").style.visibility = "visible";
-        document.getElementById("pass5").style.borderColor= "green";
-     }
-     else{
-        document.getElementById("msg_pass5").innerHTML = "Invalid";
-        document.getElementById("msg_pass5").style.visibility = "visible";
-        document.getElementById("msg_pass5").style.color = "red";
-        document.getElementById("pass5").style.borderColor = "red"
-     }
-
-};
-
 $("#form").on("submit",function(event){
    if(isfname ==true && islname == true && ismail == true && isnum == true && isdob == true && isgender == true && ispass1 == true && ispass2 == true){
       document.getElementById("allmsg").style.visibility = "hidden";
@@ -180,4 +142,3 @@ $("#form").on("submit",function(event){
       document.getElementById("allmsg").style.visibility="visible";
    }
 })
-
