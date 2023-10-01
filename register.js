@@ -99,30 +99,39 @@ $("#gender").on("change",()=>{
       error_msg("msg_gen","Please Select The Gender","gender");
    }
 })
-var password = document.getElementById("pass1").value.trim();
 $("#pass1").on("change",()=>{
+let pass = document.getElementById("pass1");
+let passValue = pass.value.trim()
    // var password = document.getElementById("pass1").value.trim();
-   var regiex =  /^([A-Za-z0-9]+){8,15}$/;
-   if(regiex.test(password)){
-      ispass1 = true;
-      success_msg("msg_pass1","","pass1")
+   let regiex =  /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,15}$/;
+   if(passValue != ""){
+      if(regiex.test(passValue)){
+         ispass1 = true;
+         success_msg("msg_pass1","","pass1")
+      }
+      else{
+         error_msg("msg_pass1","Invalid Password","pass1")
+      }
    }
    else{
-      error_msg("msg_pass1","Invalid Password","pass1")
+      error_msg("msg_pass1","Enter The Password","pass1")
    }
 })
 
 $("#pass2").on("change",()=>{
-   // var pass = document.getElementById("pass1").value.trim();
-   var crt_password = document.getElementById("pass2").value.trim();
-   if(password === crt_password){
+   let pass_ct = document.getElementById("pass2");
+   let crt_pass = pass_ct.value.trim();
+   let ctPass = document.getElementById("pass1");
+   let ctPassValue = ctPass.value.trim();
+   if(crt_pass !=="" && crt_pass.match(ctPassValue)){
       ispass2 = true;
       success_msg("msg_pass2","","pass2");
    }
    else{
-      error_msg("msg_pass2","Please Enter the Same Password","pass2")
+      error_msg("msg_pass2","Please Enter the Same Password","pass2")      
    }
 })
+
 
 const myform = document.getElementById("myform");
 myform.addEventListener("submit",function(e){
